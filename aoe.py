@@ -10,6 +10,7 @@ will = 76561198044260107
 
 
 class Stats:
+    """Object representing win/loss statistics given a set of games."""
 
     def __init__(self, wins, losses):
         self.wins = wins
@@ -20,7 +21,7 @@ class Stats:
         # Ignore the cases with "None".
         won = [m for m in matches if sum(1 for p in m["players"] if p["name"] == name and p["won"])]
         lost = [m for m in matches if sum(1 for p in m["players"] if p["name"] == name and p["won"] == False)]
-        return Stats(len(won), len(lost))
+        return cls(len(won), len(lost))
 
     @property
     def wr(self):
